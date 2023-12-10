@@ -46,8 +46,7 @@ project-root
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/library-system.git
-   cd library-system
+   git clone https://github.com/Rony1031/LetsBloomLMS.git
    npm install
    ```
 
