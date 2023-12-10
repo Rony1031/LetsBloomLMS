@@ -47,6 +47,7 @@ project-root
 
    ```bash
    git clone https://github.com/Rony1031/LetsBloomLMS.git
+   cd LetsBloomLMS
    npm install
    ```
 
