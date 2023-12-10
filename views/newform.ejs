@@ -1,0 +1,22 @@
+<%-include("partials/header")-%>
+<h1>Add New Book</h1>
+<div class="container">
+  <form action="/api/books" method="post">
+    <a href="/api/books" class="home"
+      ><span class="material-symbols-outlined">Home</span> Home</a
+    >
+    <br /><br />
+    <label for="title">Title</label>
+    <br />
+    <input type="text" id="title" name="title" placeholder="Title" />
+    <br /><br />
+    <label for="author">Author</label><br />
+    <input type="text" id="author" name="author" placeholder="Author" />
+    <br /><br />
+    <label for="genre">Genre</label><br />
+    <input type="text" id="genre" name="genre" placeholder="Genre" />
+    <br /><br />
+    <button type="submit" class="add-btn">Submit</button>
+  </form>
+</div>
+<%-include("partials/footer") -%>

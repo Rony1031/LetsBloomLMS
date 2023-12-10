@@ -1,0 +1,68 @@
+<!-- views/index.ejs -->
+
+<%-include("partials/header")-%>
+
+<h1>Library System</h1>
+
+<!-- Display All Books -->
+<div class="container">
+  <div class="search">
+  <h2>All Books</h2>
+    <form action="/api/books/search" class="form-inline my-2 my-lg-0" method="GET">
+      <input name="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button  type="submit"><span class="material-symbols-outlined">search</span></button>
+    </form>
+  </div>
+  <% if(books.length > 0){ %> 
+
+  <table id="table-items">
+    <tr class="table-headings">
+      <th>Title</th>
+      <th>Author</th>
+      <th>Genre</th>
+      <th>Update</th>
+      <th>Delete</th>
+    </tr>
+
+    <% books.forEach(book => { %>
+    <tr>
+      <td><%=book.title[0].toUpperCase() + book.title.slice(1)%></td>
+      <td><%=book.author[0].toUpperCase() + book.author.slice(1)%></td>
+      <td><%=book.genre[0].toUpperCase() + book.genre.slice(1)%></td>
+      <td class="centre">
+        <a
+          href="/api/books/<%=book._id%>"
+          class="material-symbols-outlined blue"
+          >edit_note</a
+        >
+      </td>
+      <td class="centre">
+        <a href="/delete/<%=book._id%>" class="material-symbols-outlined red"
+          >Delete</a
+        >
+      </td>
+    </tr>
+    <% }); %>
+  </table>
+  <% }else{ %>
+   <p>no book found</p>
+  <% } %>
+
+  <!-- Add New Book Form -->
+
+  <button class="add-btn" onclick="window.location.href='/addnew';">Add</button>
+</div>
+<script>
+  function startEditing(bookId) {
+    document.getElementById(`newTitle${bookId}`).readOnly = false;
+    document.getElementById(`newAuthor${bookId}`).readOnly = false;
+    document.getElementById(`newGenre${bookId}`).readOnly = false;
+  }
+
+  function cancelEditing(bookId) {
+    document.getElementById(`newTitle${bookId}`).readOnly = true;
+    document.getElementById(`newAuthor${bookId}`).readOnly = true;
+    document.getElementById(`newGenre${bookId}`).readOnly = true;
+  }
+</script>
+<%- include("partials/footer") -%>
